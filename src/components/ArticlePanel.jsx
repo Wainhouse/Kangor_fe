@@ -16,27 +16,29 @@ const ArticlePanel = ({
 }) => {
   return (
     <div className="article">
-      <Box sx={{ maxWidth: 350 }}>
-        <Paper elevation={1}>
+      <Box sx={{ maxWidth: 300, flexGrow: 1 }}>
+        <Paper elevation={20}>
           <CardMedia
-            sx={{ height: 140, borderRadius: 1 }}
+            sx={{
+              height: 100,
+            }}
             image={article_img_url}
-            title="green iguana"
+            title="img_url"
           />
           <Typography variant="h6" sx={{ mb: 1, pl: 1, pt: 1 }}>
             {title}
           </Typography>
-          <Box sx={{ display: "flex", alignItems: "center", mb: 1, pl: 1 }}>
+          <Box sx={{ mb: 1, pl: 1 }}>
             <Typography variant="subtitle2" color="text.secondary">
               {author}
             </Typography>
           </Box>
-          <Box sx={{ display: "flex", mb: 1 }}>
-            <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ mb: 1 }}>
+            <Box>
               <Typography
                 variant="body2"
                 color="text.secondary"
-                sx={{ mb: 1, pl: 1.5 }}
+                sx={{ mb: 1, pl: 1 }}
               >
                 {topic}
               </Typography>
@@ -49,7 +51,7 @@ const ArticlePanel = ({
               </Typography>
             </Box>
             <Box
-              sx={{ display: "flex", justifyContent: "flex-end", mr: 2, mb: 1 }}
+              sx={{ display: "flex", justifyContent: "flex-end", mr: 2, pb: 1 }}
             >
               <Typography variant="caption" color="text.secondary">
                 Votes:{votes}

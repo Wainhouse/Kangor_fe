@@ -1,6 +1,7 @@
 import ArticlePanel from "./ArticlePanel";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./Articles.css";
 
 const Articles = ({ setArticles, articles }) => {
   async function fetchArticles() {
@@ -15,7 +16,6 @@ const Articles = ({ setArticles, articles }) => {
       setArticles(data);
     });
   }, []);
-  console.log(articles);
   return (
     <div className="all_item_articles">
       {articles.map((article) => (
