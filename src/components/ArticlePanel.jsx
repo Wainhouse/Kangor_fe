@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Box, Paper, Typography, Avatar } from "@mui/material";
+import { Box, Paper } from "@mui/material";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 
 import "./ArticlePanel.css";
 const ArticlePanel = ({
@@ -15,23 +17,26 @@ const ArticlePanel = ({
   return (
     <div className="article">
       <Box sx={{ maxWidth: 350 }}>
-        <Paper elevation={3}>
-          <Box sx={{ p: 2 }}>
-            <Typography variant="h6" sx={{ mb: 1 }}>
-              {title}
+        <Paper elevation={1}>
+          <CardMedia
+            sx={{ height: 140, borderRadius: 1 }}
+            image={article_img_url}
+            title="green iguana"
+          />
+          <Typography variant="h6" sx={{ mb: 1, pl: 1, pt: 1 }}>
+            {title}
+          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", mb: 1, pl: 1 }}>
+            <Typography variant="subtitle2" color="text.secondary">
+              {author}
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-              <Typography variant="subtitle2" color="text.secondary">
-                {author}
-              </Typography>
-            </Box>
           </Box>
           <Box sx={{ display: "flex", mb: 1 }}>
             <Box sx={{ flexGrow: 1 }}>
               <Typography
                 variant="body2"
                 color="text.secondary"
-                sx={{ mb: 0.5, mx: 2 }}
+                sx={{ mb: 1, pl: 1.5 }}
               >
                 {topic}
               </Typography>
