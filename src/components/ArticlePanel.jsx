@@ -1,6 +1,4 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
-
 import { Box, Paper, Typography, Avatar } from "@mui/material";
 
 import "./ArticlePanel.css";
@@ -19,17 +17,10 @@ const ArticlePanel = ({
       <Box sx={{ maxWidth: 350 }}>
         <Paper elevation={3}>
           <Box sx={{ p: 2 }}>
-            <Typography variant="h6" sx={{ mb: 1, ml: 1 }}>
+            <Typography variant="h6" sx={{ mb: 1 }}>
               {title}
             </Typography>
             <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-              <Avatar
-                sx={{ width: 60, height: 50, mr: 1, mb: 0.6 }}
-                alt="Author"
-                src={
-                  "https://static.vecteezy.com/system/resources/previews/002/002/403/original/man-with-beard-avatar-character-isolated-icon-free-vector.jpg"
-                }
-              />
               <Typography variant="subtitle2" color="text.secondary">
                 {author}
               </Typography>
@@ -47,13 +38,13 @@ const ArticlePanel = ({
               <Typography
                 variant="caption"
                 color="text.secondary"
-                sx={{ mb: 0.6, mx: 2, mb: 2 }}
+                sx={{ mb: 0.6, mx: 1, mt: 5 }}
               >
                 {created_at}
               </Typography>
             </Box>
             <Box
-              sx={{ display: "flex", justifyContent: "flex-end", mr: 2, mb: 4 }}
+              sx={{ display: "flex", justifyContent: "flex-end", mr: 2, mb: 1 }}
             >
               <Typography variant="caption" color="text.secondary">
                 Votes:{votes}
