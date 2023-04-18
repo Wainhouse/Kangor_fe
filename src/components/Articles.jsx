@@ -2,20 +2,15 @@ import ArticlePanel from "./ArticlePanel";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Articles.css";
+import * as api from "../api";
 
-const Articles = ({ setArticles, articles }) => {
-  async function fetchArticles() {
-    const response = await axios.get(
-      `https://kangor.onrender.com/api/articles`
-    );
-    const artcleData = response.data;
-    return artcleData;
-  }
+const Articles = ({ setArticles, articles, isSetHome, isHome }) => {
   useEffect(() => {
-    fetchArticles().then((data) => {
+    api.fetchArticles().then((data) => {
       setArticles(data);
     });
   }, []);
+
   return (
     <div className="all_item_articles">
       {articles.map((article) => (

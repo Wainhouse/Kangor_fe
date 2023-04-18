@@ -1,0 +1,14 @@
+h4 {
+  font-size: 1.2rem;
+}
+
+.single_article {
+  grid-area: "main";
+
+  justify-content: center;
+
+  align-content: center;
+  flex-flow: column wrap;
+
+  display: flex;
+}
