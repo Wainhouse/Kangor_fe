@@ -2,6 +2,7 @@ import * as React from "react";
 import { Box, Paper } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 import "./ArticlePanel.css";
 const ArticlePanel = ({
@@ -15,52 +16,59 @@ const ArticlePanel = ({
   created_at,
 }) => {
   return (
-    <div className="article">
-      <Box sx={{ maxWidth: 300, flexGrow: 1 }}>
-        <Paper elevation={20}>
-          <CardMedia
-            sx={{
-              height: 100,
-            }}
-            image={article_img_url}
-            title="img_url"
-          />
-          <Typography variant="h6" sx={{ mb: 1, pl: 1, pt: 1 }}>
-            {title}
-          </Typography>
-          <Box sx={{ mb: 1, pl: 1 }}>
-            <Typography variant="subtitle2" color="text.secondary">
-              {author}
+    <Link to={`/articles/${article_id}`} style={{ textDecoration: "none" }}>
+      <div className="article">
+        <Box sx={{ maxWidth: 300, flexGrow: 1 }}>
+          <Paper elevation={20}>
+            <CardMedia
+              sx={{
+                height: 100,
+              }}
+              image={article_img_url}
+              title="img_url"
+            />
+            <Typography variant="h6" sx={{ mb: 1, pl: 1, pt: 1 }}>
+              {title}
             </Typography>
-          </Box>
-          <Box sx={{ mb: 1 }}>
-            <Box>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ mb: 1, pl: 1 }}
-              >
-                {topic}
-              </Typography>
-              <Typography
-                variant="caption"
-                color="text.secondary"
-                sx={{ mb: 0.6, mx: 1, mt: 5 }}
-              >
-                {created_at}
+            <Box sx={{ mb: 1, pl: 1 }}>
+              <Typography variant="subtitle2" color="text.secondary">
+                {author}
               </Typography>
             </Box>
-            <Box
-              sx={{ display: "flex", justifyContent: "flex-end", mr: 2, pb: 1 }}
-            >
-              <Typography variant="caption" color="text.secondary">
-                Votes:{votes}
-              </Typography>
+            <Box sx={{ mb: 1 }}>
+              <Box>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 1, pl: 1 }}
+                >
+                  {topic}
+                </Typography>
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{ mb: 0.6, mx: 1, mt: 5 }}
+                >
+                  {created_at}
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  mr: 2,
+                  pb: 1,
+                }}
+              >
+                <Typography variant="caption" color="text.secondary">
+                  Votes:{votes}
+                </Typography>
+              </Box>
             </Box>
-          </Box>
-        </Paper>
-      </Box>
-    </div>
+          </Paper>
+        </Box>
+      </div>
+    </Link>
   );
 };
 

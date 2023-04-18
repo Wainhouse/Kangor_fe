@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Articles from "./components/Articles";
-
+import SingleArticle from "./components/SingleArticle";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -10,7 +11,17 @@ function App() {
   return (
     <main className="App">
       <div>
-        <Articles articles={articles} setArticles={setArticles} />
+        <Routes>
+          {/* <Route
+            path="/"
+            element={<Articles articles={articles} setArticles={setArticles} />}
+          /> */}
+          <Route
+            path="/articles"
+            element={<Articles articles={articles} setArticles={setArticles} />}
+          />
+          <Route path="/articles/:article_id" element={<SingleArticle />} />
+        </Routes>
       </div>
     </main>
   );
