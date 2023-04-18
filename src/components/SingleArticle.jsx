@@ -14,7 +14,7 @@ const ArticlePage = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticle(article_id).then((data) => {
+    api.fetchArticleById(article_id).then((data) => {
       setArticle(data.article);
       setIsLoading(false);
     });

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchArticle = async (article_id) => {
+export const fetchArticleById = async (article_id) => {
   try {
     const response = await axios.get(
       `https://kangor.onrender.com/api/articles/${article_id}`

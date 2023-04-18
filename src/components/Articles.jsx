@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import "./Articles.css";
 import * as api from "../api";
 
-const Articles = ({ setArticles, articles }) => {
+const Articles = ({ setArticles, articles, isSetHome, isHome }) => {
   useEffect(() => {
     api.fetchArticles().then((data) => {
       setArticles(data);
     });
   }, []);
+
   return (
     <div className="all_item_articles">
       {articles.map((article) => (
