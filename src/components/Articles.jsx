@@ -12,7 +12,6 @@ const Articles = ({ setArticles, articles, setIsLoading, isLoading }) => {
         setIsLoading(false);
       });
     } catch (error) {
-      setIsLoading(false);
       return error;
     }
   }, []);

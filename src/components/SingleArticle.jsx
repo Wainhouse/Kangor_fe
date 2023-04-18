@@ -21,11 +21,11 @@ const ArticlePage = ({ isLoading, setIsLoading }) => {
     try {
       api.fetchArticleById(article_id).then((data) => {
         setArticle(data.article);
+        setIsLoading(false);
       });
     } catch (error) {
       return error;
     }
-    setIsLoading(false);
   }, [article_id]);
 
   if (isLoading) {
@@ -38,7 +38,7 @@ const ArticlePage = ({ isLoading, setIsLoading }) => {
             {article.title}
           </Typography>
           <Typography variant="subtitle1" sx={{ mt: 1, mb: 2, ml: 0.5 }}>
-            Topic: {article.topic}
+            {article.topic}
           </Typography>
           <CardMedia
             sx={{
