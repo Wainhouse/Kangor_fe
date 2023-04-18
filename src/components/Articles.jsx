@@ -1,6 +1,5 @@
 import ArticlePanel from "./ArticlePanel";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./Articles.css";
 import * as api from "../api";
 

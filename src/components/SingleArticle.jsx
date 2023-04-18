@@ -3,14 +3,18 @@ import { useParams } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { Box, Paper } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
 import "./SingleArticle.css";
 
 import * as api from "../api";
+import Comments from "./Comments";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [isComments, setIsComments] = useState(false);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -50,6 +54,23 @@ const ArticlePage = () => {
           <Typography variant="body2" sx={{ mt: 1 }}>
             Author: {article.author}
           </Typography>
+          <Button
+            sx={{ ml: -1 }}
+            color="primary"
+            disabled={false}
+            size="medium"
+            variant="text"
+            onClick={() => {
+              setIsComments(!isComments);
+            }}
+          >
+            Comments
+          </Button>
+          {isComments ? (
+            <Comments setComments={setComments} comments={comments} />
+          ) : (
+            <></>
+          )}
         </Box>
       </div>
     );
