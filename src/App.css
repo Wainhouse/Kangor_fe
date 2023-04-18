@@ -5,3 +5,17 @@
   grid-template-rows: auto 1fr auto;
   grid-template-areas: "header" "main" "footer";
 }
+
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+#content {
+  padding: 1rem;
+}
+
+#header + #content {
+  padding-top: 4rem;
+}

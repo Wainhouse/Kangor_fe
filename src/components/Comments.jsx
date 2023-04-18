@@ -8,11 +8,13 @@ const Comments = () => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    api.fetchArticleComments(article_id).then((data) => {
-      console.log(data.comments);
-      setComments(data.comments);
-    });
-    console.log(comments);
+    try {
+      api.fetchArticleComments(article_id).then((data) => {
+        setComments(data.comments);
+      });
+    } catch (error) {
+      return error;
+    }
   }, [article_id]);
   return (
     <div className="all_comments">

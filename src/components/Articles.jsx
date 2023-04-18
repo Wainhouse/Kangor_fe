@@ -5,9 +5,13 @@ import * as api from "../api";
 
 const Articles = ({ setArticles, articles, isSetHome, isHome }) => {
   useEffect(() => {
-    api.fetchArticles().then((data) => {
-      setArticles(data);
-    });
+    try {
+      api.fetchArticles().then((data) => {
+        setArticles(data);
+      });
+    } catch (error) {
+      return error;
+    }
   }, []);
 
   return (

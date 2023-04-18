@@ -5,28 +5,16 @@ const kangorNews = axios.create({
 });
 
 export const fetchArticleById = async (article_id) => {
-  try {
-    const response = await kangorNews.get(`/articles/${article_id}`);
-    return response.data;
-  } catch (error) {
-    return error;
-  }
+  const response = await kangorNews.get(`/articles/${article_id}`);
+  return response.data;
 };
 
 export const fetchArticles = async () => {
-  try {
-    const response = await kangorNews.get(`/articles`);
-    return response.data;
-  } catch (error) {
-    return error;
-  }
+  const response = await kangorNews.get(`/articles`);
+  return response.data;
 };
 
 export const fetchArticleComments = async (article_id) => {
-  try {
-    const response = await kangorNews.get(`/articles/${article_id}/comments`);
-    return response.data;
-  } catch (error) {
-    return error;
-  }
+  const response = await kangorNews.get(`/articles/${article_id}/comments`);
+  return response.data;
 };

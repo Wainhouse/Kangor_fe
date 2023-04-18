@@ -12,8 +12,10 @@ function App() {
 
   return (
     <main className="App">
-      <div>
+      <div id="header">
         <Header />
+      </div>
+      <div id="content">
         <Routes>
           <Route
             path="/articles"

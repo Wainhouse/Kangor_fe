@@ -5,6 +5,7 @@ import { Box, Paper } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import "./SingleArticle.css";
+import { ReactComponent as Chat } from "../img/chat-bubble.svg";
 
 import * as api from "../api";
 import Comments from "./Comments";
@@ -18,10 +19,14 @@ const ArticlePage = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticleById(article_id).then((data) => {
-      setArticle(data.article);
-      setIsLoading(false);
-    });
+    try {
+      api.fetchArticleById(article_id).then((data) => {
+        setArticle(data.article);
+        setIsLoading(false);
+      });
+    } catch (error) {
+      return error;
+    }
   }, [article_id]);
 
   if (isLoading) {
@@ -55,16 +60,16 @@ const ArticlePage = () => {
             Author: {article.author}
           </Typography>
           <Button
-            sx={{ ml: -1 }}
-            color="primary"
-            disabled={false}
-            size="medium"
+            className="commentBtn"
+            sx={{ ml: 0, mt: 2, maxWidth: 1.2 }}
+            color="inherit"
+            size="small"
             variant="text"
             onClick={() => {
               setIsComments(!isComments);
             }}
           >
-            Comments
+            <Chat />
           </Button>
           {isComments ? (
             <Comments setComments={setComments} comments={comments} />
