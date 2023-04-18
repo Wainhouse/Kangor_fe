@@ -1,24 +1,20 @@
 import axios from "axios";
 
+const kangorNews = axios.create({
+  baseURL: `https://kangor.onrender.com/api/`,
+});
+
 export const fetchArticleById = async (article_id) => {
-  try {
-    const response = await axios.get(
-      `https://kangor.onrender.com/api/articles/${article_id}`
-    );
-    return response.data;
-  } catch (error) {
-    return error;
-  }
+  const response = await kangorNews.get(`/articles/${article_id}`);
+  return response.data;
 };
 
 export const fetchArticles = async () => {
-  try {
-    const response = await axios.get(
-      `https://kangor.onrender.com/api/articles`
-    );
-    const artcleData = response.data;
-    return artcleData;
-  } catch (error) {
-    return error;
-  }
+  const response = await kangorNews.get(`/articles`);
+  return response.data;
+};
+
+export const fetchArticleComments = async (article_id) => {
+  const response = await kangorNews.get(`/articles/${article_id}/comments`);
+  return response.data;
 };

@@ -3,7 +3,6 @@ import { Box, Paper } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
-
 import "./ArticlePanel.css";
 const ArticlePanel = ({
   key,

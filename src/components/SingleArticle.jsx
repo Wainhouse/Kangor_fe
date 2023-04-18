@@ -3,21 +3,29 @@ import { useParams } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { Box, Paper } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
 import "./SingleArticle.css";
+import { ReactComponent as Chat } from "../img/chat-bubble.svg";
 
 import * as api from "../api";
+import Comments from "./Comments";
 
-const ArticlePage = () => {
+const ArticlePage = ({ isLoading, setIsLoading }) => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isComments, setIsComments] = useState(false);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticleById(article_id).then((data) => {
-      setArticle(data.article);
-      setIsLoading(false);
-    });
+    try {
+      api.fetchArticleById(article_id).then((data) => {
+        setArticle(data.article);
+      });
+    } catch (error) {
+      return error;
+    }
+    setIsLoading(false);
   }, [article_id]);
 
   if (isLoading) {
@@ -50,6 +58,23 @@ const ArticlePage = () => {
           <Typography variant="body2" sx={{ mt: 1 }}>
             Author: {article.author}
           </Typography>
+          <Button
+            className="commentBtn"
+            sx={{ ml: 0, mt: 2, maxWidth: 1.2 }}
+            color="inherit"
+            size="small"
+            variant="text"
+            onClick={() => {
+              setIsComments(!isComments);
+            }}
+          >
+            <Chat />
+          </Button>
+          {isComments ? (
+            <Comments setComments={setComments} comments={comments} />
+          ) : (
+            <></>
+          )}
         </Box>
       </div>
     );

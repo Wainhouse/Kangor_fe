@@ -3,33 +3,45 @@ import { useEffect, useState } from "react";
 import Articles from "./components/Articles";
 import Header from "./components/Header";
 import SingleArticle from "./components/SingleArticle";
+import Comments from "./components/Comments";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  const [isHome, isSetHome] = useState(false);
   const [articles, setArticles] = useState([]);
-
-  const handleHome = () => {
-    isSetHome(!isHome);
-  };
-
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <main className="App">
-      <div>
+      <div id="header">
         <Header />
+      </div>
+      <div id="content">
         <Routes>
-
-            <Route
-              path="/articles"
-              element={
-                <Articles articles={articles} setArticles={setArticles} />
-              }
-            />
-            <Route path="/articles/:article_id" element={<SingleArticle />} />
-          
-         
-
+          <Route
+            path="/articles"
+            element={
+              <Articles
+                articles={articles}
+                setArticles={setArticles}
+                setIsLoading={setIsLoading}
+              />
+            }
+          />
+          <Route
+            path="/articles/:article_id"
+            element={
+              <SingleArticle
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
+              />
+            }
+          />
+          <Route
+            path="/articles/:article_id/comments"
+            element={
+              <Comments setIsLoading={setIsLoading} isLoading={isLoading} />
+            }
+          />
           {/* <Route
             path="/"
             element={<Articles articles={articles} setArticles={setArticles} />}
