@@ -16,6 +16,7 @@ const Comments = () => {
       return error;
     }
   }, [article_id]);
+
   return (
     <div className="all_comments">
       {comments.map((comment) => {

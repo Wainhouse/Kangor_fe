@@ -9,7 +9,7 @@ import "./App.css";
 
 function App() {
   const [articles, setArticles] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <main className="App">
       <div id="header">
@@ -19,10 +19,29 @@ function App() {
         <Routes>
           <Route
             path="/articles"
-            element={<Articles articles={articles} setArticles={setArticles} />}
+            element={
+              <Articles
+                articles={articles}
+                setArticles={setArticles}
+                setIsLoading={setIsLoading}
+              />
+            }
           />
-          <Route path="/articles/:article_id" element={<SingleArticle />} />
-          <Route path="/articles/:article_id/comments" element={<Comments />} />
+          <Route
+            path="/articles/:article_id"
+            element={
+              <SingleArticle
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
+              />
+            }
+          />
+          <Route
+            path="/articles/:article_id/comments"
+            element={
+              <Comments setIsLoading={setIsLoading} isLoading={isLoading} />
+            }
+          />
           {/* <Route
             path="/"
             element={<Articles articles={articles} setArticles={setArticles} />}

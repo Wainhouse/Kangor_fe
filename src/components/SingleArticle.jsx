@@ -10,10 +10,9 @@ import { ReactComponent as Chat } from "../img/chat-bubble.svg";
 import * as api from "../api";
 import Comments from "./Comments";
 
-const ArticlePage = () => {
+const ArticlePage = ({ isLoading, setIsLoading }) => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
   const [isComments, setIsComments] = useState(false);
   const [comments, setComments] = useState([]);
 
@@ -22,11 +21,11 @@ const ArticlePage = () => {
     try {
       api.fetchArticleById(article_id).then((data) => {
         setArticle(data.article);
-        setIsLoading(false);
       });
     } catch (error) {
       return error;
     }
+    setIsLoading(false);
   }, [article_id]);
 
   if (isLoading) {
