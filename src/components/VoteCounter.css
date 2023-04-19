@@ -1,0 +1,9 @@
+.voter {
+  padding-top: 1rem;
+  font-size: 0.5rem;
+}
+
+.bolt {
+  transform: rotate(150deg);
+  height: 2rem;
+}

@@ -4,8 +4,10 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import "./ArticlePanel.css";
+import { useState } from "react";
+import VoteCounter from "../components/VoteCounter";
 const ArticlePanel = ({
-  key,
+  article,
   article_id,
   title,
   author,
@@ -14,60 +16,76 @@ const ArticlePanel = ({
   votes,
   created_at,
 }) => {
+  const [voter, setVoter] = useState(votes);
   return (
-    <Link to={`/articles/${article_id}`} style={{ textDecoration: "none" }}>
-      <div className="article">
-        <Box sx={{ maxWidth: 300, flexGrow: 1 }}>
-          <Paper elevation={20}>
-            <CardMedia
-              sx={{
-                height: 100,
-              }}
-              image={article_img_url}
-              title="img_url"
-            />
-            <Typography variant="h6" sx={{ mb: 1, pl: 1, pt: 1 }}>
-              {title}
-            </Typography>
-            <Box sx={{ mb: 1, pl: 1 }}>
-              <Typography variant="subtitle2" color="text.secondary">
-                {author}
-              </Typography>
+    <div className="article">
+      <Box sx={{ maxWidth: 300, flexGrow: 1 }}>
+        <Paper elevation={2}>
+          <VoteCounter
+            article={article}
+            key={article_id}
+            article_id={article_id}
+            votes={votes}
+            setVoter={setVoter}
+            voter={voter}
+          />
+          <Link
+            to={`/articles/${article_id}`}
+            style={{ textDecoration: "none" }}
+          >
+            <Box>
+              <Paper elevation={2}>
+                <CardMedia
+                  sx={{
+                    height: 100,
+                  }}
+                  image={article_img_url}
+                  title="img_url"
+                />
+                <Typography variant="h6" sx={{ mb: 1, pl: 1, pt: 1 }}>
+                  {title}
+                </Typography>
+                <Box sx={{ mb: 1, pl: 1 }}>
+                  <Typography variant="subtitle2" color="text.secondary">
+                    {author}
+                  </Typography>
+                </Box>
+                <Box sx={{ mb: 1 }}>
+                  <Box>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={{ mb: 1, pl: 1 }}
+                    >
+                      {topic}
+                    </Typography>
+                    <Typography
+                      variant="caption"
+                      color="text.secondary"
+                      sx={{ mb: 0.6, mx: 1, mt: 5 }}
+                    >
+                      {created_at}
+                    </Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      mr: 2,
+                      pb: 1,
+                    }}
+                  >
+                    <Typography variant="caption" color="text.secondary">
+                      Votes:{voter}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Paper>
             </Box>
-            <Box sx={{ mb: 1 }}>
-              <Box>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mb: 1, pl: 1 }}
-                >
-                  {topic}
-                </Typography>
-                <Typography
-                  variant="caption"
-                  color="text.secondary"
-                  sx={{ mb: 0.6, mx: 1, mt: 5 }}
-                >
-                  {created_at}
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  mr: 2,
-                  pb: 1,
-                }}
-              >
-                <Typography variant="caption" color="text.secondary">
-                  Votes:{votes}
-                </Typography>
-              </Box>
-            </Box>
-          </Paper>
-        </Box>
-      </div>
-    </Link>
+          </Link>
+        </Paper>
+      </Box>
+    </div>
   );
 };
 

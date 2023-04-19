@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { ReactComponent as NavIcon } from "../img/nav-logo.svg";
-import { ReactComponent as Logo } from "../img/kangaroo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
-const Header = ({ isHome, isSetHome }) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleNav = () => {
     setIsMenuOpen(!isMenuOpen);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import { Box, Paper } from "@mui/material";
+import { Box } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import "./SingleArticle.css";
@@ -9,12 +9,14 @@ import { ReactComponent as Chat } from "../img/chat-bubble.svg";
 
 import * as api from "../api";
 import Comments from "./Comments";
+import VoteCounter from "./VoteCounter";
 
 const ArticlePage = ({ isLoading, setIsLoading }) => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [isComments, setIsComments] = useState(false);
   const [comments, setComments] = useState([]);
+  const [voter, setVoter] = useState(article.votes);
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,7 +29,7 @@ const ArticlePage = ({ isLoading, setIsLoading }) => {
     }
     setIsLoading(false);
   }, [article_id]);
-
+  useEffect(() => {}, [article]);
   if (isLoading) {
     return <h4>is loading...</h4>;
   } else
@@ -38,8 +40,13 @@ const ArticlePage = ({ isLoading, setIsLoading }) => {
             {article.title}
           </Typography>
           <Typography variant="subtitle1" sx={{ mt: 1, mb: 2, ml: 0.5 }}>
-            Topic: {article.topic}
+            {article.topic}
           </Typography>
+          <VoteCounter
+            article_id={article.article_id}
+            voter={voter}
+            setVoter={setVoter}
+          />
           <CardMedia
             sx={{
               height: 200,
@@ -53,7 +60,7 @@ const ArticlePage = ({ isLoading, setIsLoading }) => {
             {article.body}
           </Typography>
           <Typography variant="body1" sx={{ mt: 2 }}>
-            Votes: {article.votes}
+            Votes: {voter ? voter : article.votes}
           </Typography>
           <Typography variant="body2" sx={{ mt: 1 }}>
             Author: {article.author}
@@ -70,6 +77,7 @@ const ArticlePage = ({ isLoading, setIsLoading }) => {
           >
             <Chat />
           </Button>
+
           {isComments ? (
             <Comments setComments={setComments} comments={comments} />
           ) : (

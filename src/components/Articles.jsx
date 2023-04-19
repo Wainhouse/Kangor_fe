@@ -24,6 +24,7 @@ const Articles = ({ setArticles, articles, setIsLoading, isLoading }) => {
         {articles.map((article) => (
           <ArticlePanel
             key={article.item_id}
+            article={article}
             article_id={article.article_id}
             title={article.title}
             author={article.author}
