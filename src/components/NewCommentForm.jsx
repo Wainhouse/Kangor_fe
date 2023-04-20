@@ -23,7 +23,6 @@ const NewCommentForm = ({ comments, setComments }) => {
       setName("");
       setBody("");
     } catch (error) {
-      // Handle the error here
       console.error(error);
       alert("Sorry, that username does not exist.");
     }
