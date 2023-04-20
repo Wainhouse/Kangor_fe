@@ -12,7 +12,11 @@ const Header = () => {
   return (
     <section className="header">
       <Link to="/" style={{ textDecoration: "none" }} className="header__link">
-        <img className="header__logo" src={require("../img/kangaroo.png")} />
+        <img
+          alt="header_logo"
+          className="header__logo"
+          src={require("../img/kangaroo.png")}
+        />
       </Link>
       <nav className="header__nav-bar">
         <ol className="header__nav-list">

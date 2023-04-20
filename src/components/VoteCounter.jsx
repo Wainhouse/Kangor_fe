@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 import "./VoteCounter.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { addVoteArticle, takeVoteArticle, updateVoteArticle } from "../api";
+import { updateVoteArticle } from "../api";
 
 const theme = createTheme({
   status: {

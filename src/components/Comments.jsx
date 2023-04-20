@@ -4,7 +4,6 @@ import * as api from "../api";
 import { useEffect, useState } from "react";
 import { ReactComponent as Add } from "../img/add_icon.svg";
 import IconButton from "@mui/material/IconButton";
-import { Link } from "react-router-dom";
 import NewCommentForm from "./NewCommentForm";
 
 const Comments = () => {
