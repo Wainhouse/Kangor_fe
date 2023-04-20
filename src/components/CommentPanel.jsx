@@ -1,5 +1,6 @@
 import Typography from "@mui/material/Typography";
 import { Box, Paper } from "@mui/material";
+
 import "./CommentPanel.css";
 const CommentPanel = ({ comment_obj }) => {
   return (
@@ -28,7 +29,7 @@ const CommentPanel = ({ comment_obj }) => {
               Votes: {comment_obj.votes}
             </Typography>
             <Typography variant="body2" sx={{ pb: 1, mt: 1 }}>
-              created at :{comment_obj.created_at}
+              Posted: {comment_obj.created_at}
             </Typography>
           </Box>
         </Paper>

@@ -26,3 +26,16 @@ export const updateVoteArticle = async (article_id, vote) => {
   const response = await kangorNews.patch(`articles/${article_id}`, newArticle);
   return response.data;
 };
+
+export const postNewComment = async (article_id, author, body) => {
+  const comment = {
+    body: body,
+    username: author,
+  };
+  const response = await kangorNews.post(
+    `articles/${article_id}/comments`,
+    comment
+  );
+
+  return response.data;
+};

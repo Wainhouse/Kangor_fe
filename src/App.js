@@ -2,6 +2,7 @@ import { useState } from "react";
 import Articles from "./components/Articles";
 import Header from "./components/Header";
 import SingleArticle from "./components/SingleArticle";
+import NewCommentForm from "./components/NewCommentForm";
 import Comments from "./components/Comments";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -35,6 +36,11 @@ function App() {
                 setIsLoading={setIsLoading}
               />
             }
+          />
+          <Route path="/" element={<NewCommentForm />} />
+          <Route
+            path="/api/articles/:articleId/newcomments"
+            element={<NewCommentForm />}
           />
           <Route
             path="/articles/:article_id"
