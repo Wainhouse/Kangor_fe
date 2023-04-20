@@ -10,18 +10,23 @@ const NewCommentForm = ({ comments, setComments }) => {
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setComments(() => {
-      return [
-        { author: name, body: body, votes: 0, created_at: "Just now" },
-        ...comments,
-      ];
-    });
-    postNewComment(article_id, name, body).then((data) => {
+    try {
+      const data = await postNewComment(article_id, name, body);
+      setComments((prevComments) => {
+        return [
+          { author: name, body: body, votes: 0, created_at: "Just now" },
+          ...prevComments,
+        ];
+      });
       setName("");
       setBody("");
-    });
+    } catch (error) {
+      // Handle the error here
+      console.error(error);
+      alert("Sorry, that username does not exist.");
+    }
   };
 
   return (
