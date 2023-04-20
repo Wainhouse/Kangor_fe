@@ -18,3 +18,11 @@ export const fetchArticleComments = async (article_id) => {
   const response = await kangorNews.get(`/articles/${article_id}/comments`);
   return response.data;
 };
+
+export const updateVoteArticle = async (article_id, vote) => {
+  const newArticle = {
+    inc_votes: vote,
+  };
+  const response = await kangorNews.patch(`articles/${article_id}`, newArticle);
+  return response.data;
+};

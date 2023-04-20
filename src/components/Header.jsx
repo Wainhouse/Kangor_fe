@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { ReactComponent as NavIcon } from "../img/nav-logo.svg";
-import { ReactComponent as Logo } from "../img/kangaroo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
-const Header = ({ isHome, isSetHome }) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleNav = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -12,11 +11,7 @@ const Header = ({ isHome, isSetHome }) => {
 
   return (
     <section className="header">
-      <Link
-        to="/articles"
-        style={{ textDecoration: "none" }}
-        className="header__link"
-      >
+      <Link to="/" style={{ textDecoration: "none" }} className="header__link">
         <img className="header__logo" src={require("../img/kangaroo.png")} />
       </Link>
       <nav className="header__nav-bar">

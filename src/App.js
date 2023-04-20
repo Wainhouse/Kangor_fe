@@ -1,10 +1,9 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Articles from "./components/Articles";
 import Header from "./components/Header";
 import SingleArticle from "./components/SingleArticle";
 import Comments from "./components/Comments";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -19,6 +18,16 @@ function App() {
         <Routes>
           <Route
             path="/articles"
+            element={
+              <Articles
+                articles={articles}
+                setArticles={setArticles}
+                setIsLoading={setIsLoading}
+              />
+            }
+          />
+          <Route
+            path="/"
             element={
               <Articles
                 articles={articles}

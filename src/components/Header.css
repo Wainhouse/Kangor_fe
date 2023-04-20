@@ -11,11 +11,11 @@ a:visited {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 3.5rem;
+  height: 4rem;
   padding: 1rem;
   gap: 2rem;
-  background: #aaaaaa;
-  color: #dddddd;
+  background: #7cbb3c;
+  color: #5f3e3c;
 
   grid-area: "header";
 }
@@ -53,7 +53,7 @@ a:visited {
   right: 1.5rem;
   border-style: solid;
   border-width: 0 1rem 1rem 1rem;
-  border-color: transparent transparent #fff transparent;
+  border-color: transparent transparent #7cbb3c transparent;
 }
 .nav-item:hover .nav-dropdown {
   display: block;
@@ -61,27 +61,29 @@ a:visited {
 
 .dropdown-item {
   padding: 0.5rem;
-  color: #333;
+  color: #5f3e3c;
   font-size: 1.4rem;
 }
 
 .dropdown-item:hover {
-  background-color: #f5f5f5;
+  background-color: #5ca373;
 }
 
 .nav-dropdown {
   width: 10rem;
+  margin-top: 2rem;
+
   list-style-type: none;
   position: absolute;
   top: 0.3rem;
   right: 1rem;
   z-index: 1rem;
-  background-color: #fff;
-  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+  background-color: #7cbb3c;
+  box-shadow: 0.2rem 0.6rem 0.6rem rgba(0, 0.1, 0.1, 0.1);
   display: none;
 }
 
 .header__logo {
-  width: 3rem;
+  width: 3.5rem;
   padding-top: 0.5rem;
 }
