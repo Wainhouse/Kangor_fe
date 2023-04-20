@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 import "./VoteCounter.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { addVoteArticle, takeVoteArticle } from "../api";
+import { addVoteArticle, takeVoteArticle, updateVoteArticle } from "../api";
 
 const theme = createTheme({
   status: {
@@ -32,14 +32,8 @@ const theme = createTheme({
 });
 
 export default function VoteCounter({ voter, setVoter, article_id }) {
-  const handleAddVote = () => {
-    addVoteArticle(article_id, 1).then((data) => {
-      const votesNum = data.article.votes;
-      setVoter(votesNum);
-    });
-  };
-  const handleTakeVote = () => {
-    takeVoteArticle(article_id, 1).then((data) => {
+  const handleUpdateChange = (article_id, newVote) => {
+    updateVoteArticle(article_id, newVote).then((data) => {
       const votesNum = data.article.votes;
       setVoter(votesNum);
     });
@@ -72,7 +66,9 @@ export default function VoteCounter({ voter, setVoter, article_id }) {
               variant="contained"
               color="primary"
               aria-label="reduce"
-              onClick={handleTakeVote}
+              onClick={() => {
+                handleUpdateChange(article_id, -1);
+              }}
             >
               <RemoveIcon fontSize="small" />
             </Button>
@@ -81,7 +77,9 @@ export default function VoteCounter({ voter, setVoter, article_id }) {
               variant="contained"
               color="primary"
               aria-label="increase"
-              onClick={handleAddVote}
+              onClick={() => {
+                handleUpdateChange(article_id, 1);
+              }}
             >
               <AddIcon height="0.2" fontSize="small" />
             </Button>

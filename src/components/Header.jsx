@@ -11,11 +11,7 @@ const Header = () => {
 
   return (
     <section className="header">
-      <Link
-        to="/articles"
-        style={{ textDecoration: "none" }}
-        className="header__link"
-      >
+      <Link to="/" style={{ textDecoration: "none" }} className="header__link">
         <img className="header__logo" src={require("../img/kangaroo.png")} />
       </Link>
       <nav className="header__nav-bar">
