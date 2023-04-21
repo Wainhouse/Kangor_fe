@@ -1,5 +1,7 @@
 import Typography from "@mui/material/Typography";
 import { Box, Paper } from "@mui/material";
+import dayjs from "dayjs";
+import BoltIcon from "@mui/icons-material/Bolt";
 
 import "./CommentPanel.css";
 const CommentPanel = ({ comment_obj }) => {
@@ -26,10 +28,12 @@ const CommentPanel = ({ comment_obj }) => {
           </Box>
           <Box sx={{ maxWidth: 450, flexGrow: 1, ml: 1, mr: 1 }}>
             <Typography variant="body2" sx={{ mt: 0.3 }}>
-              Votes: {comment_obj.votes}
+              <BoltIcon className="bolt" />
+              {comment_obj.votes}
             </Typography>
             <Typography variant="body2" sx={{ pb: 1, mt: 1 }}>
-              Posted: {comment_obj.created_at}
+              Posted:{" "}
+              {dayjs(comment_obj.created_at).format("h:mm A - MMM, DD, YYYY")}
             </Typography>
           </Box>
         </Paper>

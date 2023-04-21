@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import "./ArticlePanel.css";
 import { useState } from "react";
 import VoteCounter from "../components/VoteCounter";
+import BoltIcon from "@mui/icons-material/Bolt";
+
 const ArticlePanel = ({
   article,
   article_id,
@@ -76,7 +78,8 @@ const ArticlePanel = ({
                     }}
                   >
                     <Typography variant="caption" color="text.secondary">
-                      Votes:{voter}
+                      <BoltIcon className="bolt" />
+                      {voter}
                     </Typography>
                   </Box>
                 </Box>

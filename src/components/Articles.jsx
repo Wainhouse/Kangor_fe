@@ -2,6 +2,7 @@ import ArticlePanel from "./ArticlePanel";
 import { useEffect } from "react";
 import "./Articles.css";
 import * as api from "../api";
+import dayjs from "dayjs";
 
 const Articles = ({ setArticles, articles, setIsLoading, isLoading }) => {
   useEffect(() => {
@@ -29,7 +30,9 @@ const Articles = ({ setArticles, articles, setIsLoading, isLoading }) => {
             title={article.title}
             author={article.author}
             topic={article.topic}
-            created_at={article.created_at}
+            created_at={dayjs(article.created_at).format(
+              "h:mm A - MMM, DD, YYYY"
+            )}
             article_img_url={article.article_img_url}
             votes={article.votes}
             comment_count={article.comment_count}

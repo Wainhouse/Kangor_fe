@@ -5,6 +5,9 @@ import { Box } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import "./SingleArticle.css";
+import dayjs from "dayjs";
+import BoltIcon from "@mui/icons-material/Bolt";
+
 import { ReactComponent as Chat } from "../img/chat-bubble.svg";
 
 import * as api from "../api";
@@ -60,10 +63,13 @@ const ArticlePage = ({ isLoading, setIsLoading }) => {
             {article.body}
           </Typography>
           <Typography variant="body1" sx={{ mt: 2 }}>
-            Votes: {voter ? voter : article.votes}
+            <BoltIcon className="bolt"/> {voter ? voter : article.votes}
           </Typography>
           <Typography variant="body2" sx={{ mt: 1 }}>
-            Author: {article.author}
+            {article.author}
+          </Typography>
+          <Typography variant="body2" sx={{ mt: 1 }}>
+            {dayjs(article.created_at).format("h:mm A - MMM, DD, YYYY")}
           </Typography>
           <Button
             className="commentBtn"
