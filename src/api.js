@@ -8,9 +8,18 @@ export const fetchArticleById = async (article_id) => {
   const response = await kangorNews.get(`/articles/${article_id}`);
   return response.data;
 };
-
-export const fetchArticles = async () => {
-  const response = await kangorNews.get(`/articles`);
+export const fetchArticles = async (
+  topic,
+  sortBy = "created_at",
+  order = "desc"
+) => {
+  const response = await kangorNews.get(`/articles`, {
+    params: {
+      topic: topic,
+      sort_by: sortBy,
+      order: order,
+    },
+  });
   return response.data;
 };
 
