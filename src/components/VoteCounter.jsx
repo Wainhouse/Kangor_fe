@@ -35,16 +35,16 @@ const theme = createTheme({
 
 export default function VoteCounter({ voter, setVoter, article_id, votes }) {
   let location = useLocation();
-  useEffect(() => {
-    setVoter(votes);
-  }, [location]);
+
   const handleUpdateChange = (article_id, newVote) => {
     updateVoteArticle(article_id, newVote).then((data) => {
       const votesNum = data.article.votes;
       setVoter(votesNum);
     });
   };
-  useEffect(() => {}, [votes]);
+  useEffect(() => {
+    handleUpdateChange(article_id, 0);
+  }, [location]);
   return (
     <ThemeProvider theme={theme}>
       <Box

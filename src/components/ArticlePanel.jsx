@@ -23,7 +23,7 @@ const ArticlePanel = ({
   let location = useLocation();
   const [voter, setVoter] = useState(votes);
   useEffect(() => {
-    setVoter(votes);
+    setVoter(votes + 0);
   }, [location]);
   return (
     <div className="article">
