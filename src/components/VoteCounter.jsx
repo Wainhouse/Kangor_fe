@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import BoltIcon from "@mui/icons-material/Bolt";
+import { useLocation } from "react-router-dom";
+
 import { useEffect } from "react";
 
 import "./VoteCounter.css";
@@ -31,14 +33,18 @@ const theme = createTheme({
   },
 });
 
-export default function VoteCounter({ voter, setVoter, article_id }) {
+export default function VoteCounter({ voter, setVoter, article_id, votes }) {
+  let location = useLocation();
+  useEffect(() => {
+    setVoter(votes);
+  }, [location]);
   const handleUpdateChange = (article_id, newVote) => {
     updateVoteArticle(article_id, newVote).then((data) => {
       const votesNum = data.article.votes;
       setVoter(votesNum);
     });
   };
-  useEffect(() => {}, [voter]);
+  useEffect(() => {}, [votes]);
   return (
     <ThemeProvider theme={theme}>
       <Box

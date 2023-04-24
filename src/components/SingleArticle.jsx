@@ -5,6 +5,10 @@ import { Box } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import "./SingleArticle.css";
+import dayjs from "dayjs";
+import BoltIcon from "@mui/icons-material/Bolt";
+import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
+
 import { ReactComponent as Chat } from "../img/chat-bubble.svg";
 
 import * as api from "../api";
@@ -39,7 +43,10 @@ const ArticlePage = ({ isLoading, setIsLoading }) => {
           <Typography variant="h4" sx={{ mt: 1, ml: 0.5 }}>
             {article.title}
           </Typography>
-          <Typography variant="subtitle1" sx={{ mt: 1, mb: 2, ml: 0.5 }}>
+          <Typography
+            variant="subtitle1"
+            sx={{ mt: 1, mb: 2, ml: 0.5, mr: 0.5 }}
+          >
             {article.topic}
           </Typography>
           <VoteCounter
@@ -56,14 +63,49 @@ const ArticlePage = ({ isLoading, setIsLoading }) => {
           />
         </Box>
         <Box sx={{ maxWidth: 450, flexGrow: 1, ml: 1, mr: 1 }}>
-          <Typography variant="body1" sx={{ mt: 1 }}>
+          <Typography variant="body1" sx={{ mt: 1, mr: 1 }}>
             {article.body}
           </Typography>
           <Typography variant="body1" sx={{ mt: 2 }}>
-            Votes: {voter ? voter : article.votes}
+            <BoltIcon className="bolt" /> {voter ? voter : article.votes}
           </Typography>
-          <Typography variant="body2" sx={{ mt: 1 }}>
-            Author: {article.author}
+          <Box
+            sx={{
+              mb: 1,
+              ml: 1,
+              mt: 1,
+              mb: 1,
+              display: "flex",
+              alignContent: "space-around",
+            }}
+          >
+            <Typography
+              variant="subtitle2"
+              sx={{
+                mr: 0.5,
+                maxHeight: 15,
+              }}
+              color="text.secondary"
+            >
+              <AccountBoxOutlinedIcon
+                sx={{
+                  maxHeight: 15,
+                }}
+              />
+            </Typography>
+            <Typography
+              variant="subtitle2"
+              sx={{
+                mt: 0.1,
+                maxHeight: 15,
+              }}
+              color="text.secondary"
+            >
+              {article.author}
+            </Typography>
+          </Box>
+          <Typography variant="body2" sx={{ mt: 1, ml: 1 }}>
+            {dayjs(article.created_at).format("h:mm A - MMM, DD, YYYY")}
           </Typography>
           <Button
             className="commentBtn"

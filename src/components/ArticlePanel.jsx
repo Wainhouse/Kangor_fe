@@ -4,28 +4,37 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import "./ArticlePanel.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import VoteCounter from "../components/VoteCounter";
+import BoltIcon from "@mui/icons-material/Bolt";
+import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
+import { useLocation } from "react-router-dom";
+
 const ArticlePanel = ({
   article,
   article_id,
+  topics,
   title,
   author,
-  topic,
   article_img_url,
   votes,
   created_at,
 }) => {
+  let location = useLocation();
   const [voter, setVoter] = useState(votes);
+  useEffect(() => {
+    setVoter(votes);
+  }, [location]);
   return (
     <div className="article">
       <Box sx={{ maxWidth: 300, flexGrow: 1 }}>
         <Paper elevation={2}>
           <VoteCounter
             article={article}
+            topics={topics}
             key={article_id}
             article_id={article_id}
-            votes={votes}
+            votes={voter}
             setVoter={setVoter}
             voter={voter}
           />
@@ -45,8 +54,35 @@ const ArticlePanel = ({
                 <Typography variant="h6" sx={{ mb: 1, pl: 1, pt: 1 }}>
                   {title}
                 </Typography>
-                <Box sx={{ mb: 1, pl: 1 }}>
-                  <Typography variant="subtitle2" color="text.secondary">
+                <Box
+                  sx={{
+                    mb: 1,
+                    pl: 1,
+                    display: "flex",
+                  }}
+                >
+                  <Typography
+                    variant="subtitle2"
+                    sx={{
+                      mr: 0.2,
+                      display: "flex",
+                    }}
+                    color="text.secondary"
+                  >
+                    <AccountBoxOutlinedIcon
+                      sx={{
+                        maxHeight: 15,
+                      }}
+                    />
+                  </Typography>
+                  <Typography
+                    sx={{
+                      mt: 0.1,
+                      display: "flex",
+                    }}
+                    variant="subtitle2"
+                    color="text.secondary"
+                  >
                     {author}
                   </Typography>
                 </Box>
@@ -55,14 +91,14 @@ const ArticlePanel = ({
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ mb: 1, pl: 1 }}
+                      sx={{ mb: 0.1, ml: 1.5 }}
                     >
-                      {topic}
+                      {topics}
                     </Typography>
                     <Typography
                       variant="caption"
                       color="text.secondary"
-                      sx={{ mb: 0.6, mx: 1, mt: 5 }}
+                      sx={{ mb: 0.6, mx: 1, mt: 0.2, ml: 1.5 }}
                     >
                       {created_at}
                     </Typography>
@@ -76,7 +112,8 @@ const ArticlePanel = ({
                     }}
                   >
                     <Typography variant="caption" color="text.secondary">
-                      Votes:{voter}
+                      <BoltIcon className="bolt" />
+                      {voter}
                     </Typography>
                   </Box>
                 </Box>
