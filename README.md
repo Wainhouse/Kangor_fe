@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Kangor Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Kangor Frontend repository! This repository contains the frontend code for Kangor, an e-commerce platform for buying and selling kangaroo-themed merchandise.
 
-## Available Scripts
+## About the Project
 
-In the project directory, you can run:
+Kangor is an e-commerce platform that allows users to browse and purchase kangaroo-themed merchandise. The Kangor Frontend is built using React, Redux, React Router, Axios, Bootstrap, Font Awesome, Jest, and Enzyme.
 
-### `npm start`
+### Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Browse and search for kangaroo-themed merchandise
+- Add items to your cart and checkout
+- View your order history and order details
+- Create and manage your Kangor account
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before you can run the Kangor Frontend locally, you'll need to have the following software installed:
 
-### `npm run build`
+- Node.js (version 14 or higher)
+- npm (version 6 or higher)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To install the Kangor Frontend, follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone this repository:
 
-### `npm run eject`
+git clone https://github.com/Wainhouse/kangor_fe.git
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Change into the project directory:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+cd kangor_fe
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Install the project dependencies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+npm install
 
-## Learn More
+### Running Locally
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To run the Kangor Frontend locally, follow these steps:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Start the development server:
 
-### Code Splitting
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Open your browser and navigate to `http://localhost:3000` to view the Kangor Frontend.
 
-### Analyzing the Bundle Size
+### Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The Kangor Frontend relies on a backend API to fetch and manipulate data. You can find the backend repository for Kangor [here](https://github.com/Wainhouse/kangor_be).
 
-### Making a Progressive Web App
+## Deployed Version
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+You can find the deployed version of the Kangor Frontend [here](https://kangor-fe.herokuapp.com/).
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The Kangor Frontend is released under the [MIT License](LICENSE).
