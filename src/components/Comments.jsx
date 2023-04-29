@@ -10,6 +10,11 @@ const Comments = () => {
   const { article_id } = useParams();
   const [comments, setComments] = useState([]);
   const [newCommentShow, setNewCommentShow] = useState(true);
+  const handleDeleteComment = (commentId) => {
+    setComments((prevComments) =>
+      prevComments.filter((comment) => comment.id !== commentId)
+    );
+  };
 
   useEffect(() => {
     try {
@@ -19,7 +24,7 @@ const Comments = () => {
     } catch (error) {
       return error;
     }
-  }, [article_id]);
+  }, [article_id, comments]);
 
   return (
     <div className="all_comments">
@@ -39,7 +44,13 @@ const Comments = () => {
         <></>
       )}
       {comments.map((comment) => {
-        return <CommentPanel comment_obj={comment} key={comment.comment_id} />;
+        return (
+          <CommentPanel
+            comment_obj={comment}
+            key={comment.comment_id}
+            onDelete={handleDeleteComment}
+          />
+        );
       })}
     </div>
   );

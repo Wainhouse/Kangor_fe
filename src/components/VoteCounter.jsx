@@ -37,6 +37,7 @@ export default function VoteCounter({ voter, setVoter, article_id, votes }) {
   let location = useLocation();
 
   const handleUpdateChange = (article_id, newVote) => {
+    if (article_id === undefined) return;
     updateVoteArticle(article_id, newVote).then((data) => {
       const votesNum = data.article.votes;
       setVoter(votesNum);

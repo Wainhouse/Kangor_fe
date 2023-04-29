@@ -9,3 +9,9 @@
 
   grid-area: "main";
 }
+
+.remove_icon {
+  width: 1.5rem;
+  height: auto;
+  margin-left: 15rem;
+}

@@ -20,7 +20,6 @@ export const fetchArticles = async (
       order: order,
     },
   });
-  console.log(response.data);
   return response.data;
 };
 
@@ -47,5 +46,10 @@ export const postNewComment = async (article_id, author, body) => {
     comment
   );
 
+  return response.data;
+};
+
+export const deleteCommentById = async (comment_id) => {
+  const response = await kangorNews.delete(`/comments/${comment_id}`);
   return response.data;
 };
