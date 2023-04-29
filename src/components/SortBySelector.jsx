@@ -1,6 +1,8 @@
 import * as React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
+import { Box } from "@mui/material";
+
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
@@ -25,8 +27,8 @@ const SortBySelector = ({
   };
 
   return (
-    <div>
-      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+    <Box sx={{ display: "inline-flex" }}>
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 70 }}>
         <InputLabel id="demo-simple-select-standard-label">Sort by:</InputLabel>
         <Select
           labelId="demo-simple-select-standard-label"
@@ -45,7 +47,7 @@ const SortBySelector = ({
           <MenuItem value="votes">Votes</MenuItem>
         </Select>
       </FormControl>
-      <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+      <FormControl variant="filled" sx={{ m: 1, minWidth: 80 }}>
         <InputLabel id="demo-simple-select-filled-label">Order By:</InputLabel>
         <Select
           labelId="demo-simple-select-filled-label"
@@ -62,7 +64,7 @@ const SortBySelector = ({
           <MenuItem value="desc">Descending</MenuItem>
         </Select>
       </FormControl>
-    </div>
+    </Box>
   );
 };
 

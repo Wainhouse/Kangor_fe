@@ -54,7 +54,7 @@ const Articles = ({ articles, setArticles, setIsLoading, isLoading }) => {
             sx={{
               mt: 1,
               pt: 0,
-              mr: 19,
+              ml: 1,
             }}
             className="topics_sortby_bar"
           >
