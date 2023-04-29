@@ -58,4 +58,4 @@ You can find the deployed version of the Kangor Frontend [here](https://kangor-f
 
 ## License
 
-The Kangor Frontend is released under the [MIT License](LICENSE).
+The Kangor Frontend is released by Luke Wainhouse
