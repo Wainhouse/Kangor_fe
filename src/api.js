@@ -20,6 +20,7 @@ export const fetchArticles = async (
       order: order,
     },
   });
+  console.log(response.data);
   return response.data;
 };
 

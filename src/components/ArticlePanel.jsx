@@ -3,6 +3,10 @@ import { Box, Paper } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
+
+import { ReactComponent as Chat } from "../img/chat-bubble.svg";
+
 import "./ArticlePanel.css";
 import { useState, useEffect } from "react";
 import VoteCounter from "../components/VoteCounter";
@@ -10,20 +14,11 @@ import BoltIcon from "@mui/icons-material/Bolt";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import { useLocation } from "react-router-dom";
 
-const ArticlePanel = ({
-  article,
-  article_id,
-  topics,
-  title,
-  author,
-  article_img_url,
-  votes,
-  created_at,
-}) => {
+const ArticlePanel = ({ article, article_id, topics }) => {
   let location = useLocation();
-  const [voter, setVoter] = useState(votes);
+  const [voter, setVoter] = useState(article.votes);
   useEffect(() => {
-    setVoter(votes + 0);
+    setVoter(article.votes + 0);
   }, [location]);
   return (
     <div className="article">
@@ -32,8 +27,8 @@ const ArticlePanel = ({
           <VoteCounter
             article={article}
             topics={topics}
-            key={article_id}
-            article_id={article_id}
+            key={article.article_id}
+            article_id={article.article_id}
             votes={voter}
             setVoter={setVoter}
             voter={voter}
@@ -48,11 +43,11 @@ const ArticlePanel = ({
                   sx={{
                     height: 100,
                   }}
-                  image={article_img_url}
+                  image={article.article_img_url}
                   title="img_url"
                 />
                 <Typography variant="h6" sx={{ mb: 1, pl: 1, pt: 1 }}>
-                  {title}
+                  {article.title}
                 </Typography>
                 <Box
                   sx={{
@@ -83,7 +78,7 @@ const ArticlePanel = ({
                     variant="subtitle2"
                     color="text.secondary"
                   >
-                    {author}
+                    {article.author}
                   </Typography>
                 </Box>
                 <Box sx={{ mb: 1 }}>
@@ -93,14 +88,30 @@ const ArticlePanel = ({
                       color="text.secondary"
                       sx={{ mb: 0.1, ml: 1.5 }}
                     >
-                      {topics}
+                      {article.topics}
                     </Typography>
                     <Typography
                       variant="caption"
                       color="text.secondary"
                       sx={{ mb: 0.6, mx: 1, mt: 0.2, ml: 1.5 }}
                     >
-                      {created_at}
+                      <Chat /> {article.comment_count}
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <Typography
+                      className="createdAt_votes_box"
+                      variant="caption"
+                      color="text.secondary"
+                      sx={{ mb: 0, mx: 1, mt: 0.2, ml: 1.5 }}
+                    >
+                      {dayjs(article.created_at).format(
+                        "h:mm A - MMM, DD, YYYY"
+                      )}
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      <BoltIcon className="bolt" />
+                      {voter}
                     </Typography>
                   </Box>
                   <Box
@@ -110,12 +121,7 @@ const ArticlePanel = ({
                       mr: 2,
                       pb: 1,
                     }}
-                  >
-                    <Typography variant="caption" color="text.secondary">
-                      <BoltIcon className="bolt" />
-                      {voter}
-                    </Typography>
-                  </Box>
+                  ></Box>
                 </Box>
               </Paper>
             </Box>
