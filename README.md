@@ -2,6 +2,8 @@
 
 Welcome to the Kangor Frontend repository! This repository contains the frontend code for Kangor, an e-commerce platform for buying and selling kangaroo-themed merchandise.
 
+<a href="https://kangor.netlify.app/">Kangor</a>
+
 ## About the Project
 
 Kangor is an e-commerce platform that allows users to browse and purchase kangaroo-themed merchandise. The Kangor Frontend is built using React, Redux, React Router, Axios, Bootstrap, Font Awesome, Jest, and Enzyme.
@@ -12,6 +14,12 @@ Kangor is an e-commerce platform that allows users to browse and purchase kangar
 - Add items to your cart and checkout
 - View your order history and order details
 - Create and manage your Kangor account
+
+### Initial Designs 
+
+<img alt= " component design " src="https://user-images.githubusercontent.com/60632707/235324724-d033af9f-865f-4a8a-9591-78f37b02fe86.png" />
+<a href="https://www.figma.com/file/4oGJfSWZBIwa4gEwWVkj8w/Kangor?node-id=0%3A1&t=kE5mb08HDithRHte-1">My Figma Design</a>
+
 
 ## Getting Started
 
@@ -54,7 +62,7 @@ The Kangor Frontend relies on a backend API to fetch and manipulate data. You ca
 
 ## Deployed Version
 
-You can find the deployed version of the Kangor Frontend [here](https://kangor-fe.herokuapp.com/).
+You can find the deployed version of the Kangor Frontend [here](https://kangor.netlify.app/).
 
 ## License
 
