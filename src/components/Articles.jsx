@@ -1,11 +1,13 @@
 import ArticlePanel from "./ArticlePanel";
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import "./Articles.css";
 import * as api from "../api";
 import dayjs from "dayjs";
 import { Chip, Box } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link, useParams } from "react-router-dom";
+import SortBySelector from "./SortBySelector";
 
 const theme = createTheme({
   status: {
@@ -32,19 +34,16 @@ const theme = createTheme({
 
 const Articles = ({ articles, setArticles, setIsLoading, isLoading }) => {
   const { topic } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortByQuery = searchParams.get("sort_by");
+  const orderQuery = searchParams.get("order");
 
   useEffect(() => {
-    try {
-      setIsLoading(true);
-      api.fetchArticles(topic).then((data) => {
-        setArticles(data);
-        setIsLoading(false);
-      });
-    } catch (error) {
+    api.fetchArticles(topic, sortByQuery, orderQuery).then((articles) => {
+      setArticles(articles);
       setIsLoading(false);
-      return error;
-    }
-  }, [topic]);
+    });
+  }, [topic, sortByQuery, orderQuery]);
   if (isLoading) {
     return <h4>is loading...</h4>;
   } else
@@ -57,7 +56,7 @@ const Articles = ({ articles, setArticles, setIsLoading, isLoading }) => {
               pt: 0,
               mr: 19,
             }}
-            className="topics_bar"
+            className="topics_sortby_bar"
           >
             <Link
               to="/articles/topic/coding"
@@ -104,6 +103,12 @@ const Articles = ({ articles, setArticles, setIsLoading, isLoading }) => {
                 clickable
               />
             </Link>
+            <SortBySelector
+              sortByQuery={sortByQuery}
+              orderQuery={orderQuery}
+              setSearchParams={setSearchParams}
+              searchParams={searchParams}
+            />
           </Box>
         </ThemeProvider>
         <div className="all_item_articles">
