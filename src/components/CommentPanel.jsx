@@ -2,9 +2,22 @@ import Typography from "@mui/material/Typography";
 import { Box, Paper } from "@mui/material";
 import dayjs from "dayjs";
 import BoltIcon from "@mui/icons-material/Bolt";
+import { ReactComponent as Remove } from "../img/delete_icon.svg";
+import { useParams } from "react-router-dom";
+import { deleteCommentById } from "../api";
+import { useEffect } from "react";
 
 import "./CommentPanel.css";
-const CommentPanel = ({ comment_obj }) => {
+const CommentPanel = ({ comment_obj, onDelete }) => {
+  const handleDelete = async () => {
+    try {
+      await deleteCommentById(comment_obj.comment_id);
+      onDelete(comment_obj.comment_id);
+      console.log("deleted");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="CommentsPanel">
       <Box
@@ -31,10 +44,13 @@ const CommentPanel = ({ comment_obj }) => {
               <BoltIcon className="bolt" />
               {comment_obj.votes}
             </Typography>
-            <Typography variant="body2" sx={{ pb: 1, mt: 1 }}>
-              Posted:{" "}
-              {dayjs(comment_obj.created_at).format("h:mm A - MMM, DD, YYYY")}
-            </Typography>
+            <Box>
+              <Typography variant="body2" sx={{ pb: 1, mt: 1 }}>
+                Posted:{" "}
+                {dayjs(comment_obj.created_at).format("h:mm A - MMM, DD, YYYY")}
+                <Remove className="remove_icon" onClick={handleDelete} />
+              </Typography>
+            </Box>
           </Box>
         </Paper>
       </Box>
