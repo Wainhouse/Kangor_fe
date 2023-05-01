@@ -1,6 +1,6 @@
 # Kangor Frontend
 
-Welcome to the Kangor Frontend repository! This repository contains the frontend code for Kangor, an e-commerce platform for buying and selling kangaroo-themed merchandise.
+Welcome to the Kangor Frontend repository! This repository contains the frontend code for Kangor,a news platform developed by a fullstack bootcamp student.
 
 <a href="https://kangor.netlify.app/">Kangor</a>
 
