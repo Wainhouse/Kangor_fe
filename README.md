@@ -6,13 +6,15 @@ Welcome to the Kangor Frontend repository! This repository contains the frontend
 
 ## About the Project
 
-Kangor is an e-commerce platform that allows users to browse and purchase kangaroo-themed merchandise. The Kangor Frontend is built using React, Redux, React Router, Axios, Bootstrap, Font Awesome, Jest, and Enzyme.
+Kangor is a Nodejs, Expressjs, Reactjs, and PostgreSQL full-stack application. It is a news app that allows
+users to scroll through articles. The articles can be liked and commented on by users. It's mobile-friendly and
+responsive.
 
 ### Features
 
-- Browse and search for kangaroo-themed merchandise
-- Add items to your cart and checkout
-- View your order history and order details
+- Browse News
+- Add Comments and Like to your favourite posts
+- Sort by topics
 - Create and manage your Kangor account
 
 ### Initial Designs 
